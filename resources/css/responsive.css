@@ -1,0 +1,389 @@
+/* RESPONSIVE*/
+@media (max-width: 768px) {
+
+    .carousel-img-fixed {
+        height: 250px;
+    }
+
+    .site-footer .row {
+        text-align: center;
+    }
+
+    .footer-table {
+        margin: 0 auto;
+    }
+
+    .footer-links li {
+        display: inline-block;
+        margin: 0 10px 5px 0;
+    }
+
+    .header-custom {
+        height: 45vh;
+    }
+
+    .form-search {
+        width: 98%;
+        padding: 11px;
+    }
+
+    .form-search input.form-control,
+    .form-search .dropdown button,
+    .btn-search {
+        font-size: 10px;
+        padding: 0px 15px;
+    }
+
+    .form-search .me-3 {
+        margin-right: 8px !important;
+    }
+
+    .navbar-toggler {
+        order: 1;
+    }
+
+    .navbar-brand {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .d-lg-none {
+        order: 3;
+    }
+
+    .navbar-custom {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .navbar-custom .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 80%;
+        height: 100vh;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .dropdown-submenu .submenu {
+        padding-left: 20px;
+    }
+
+    .dropdown-submenu>a {
+        padding: 10px;
+    }
+
+    .dropdown-submenu i {
+        font-size: 0.9rem;
+    }
+
+
+
+    .navbar-custom .nav-link {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+
+    .navbar .nav-link i {
+        font-size: 1.4rem;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .btn-announce {
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .dropdown-menu {
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .badge {
+        position: static !important;
+        margin-left: 8px;
+    }
+
+    .navbar-toggler {
+        order: 1;
+        border: none;
+        outline: none;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar-collapse.show {
+        animation: slideIn 0.3s ease;
+    }
+
+    .navbar .d-flex {
+        gap: 8px;
+    }
+
+    .nav-right {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-right .dropdown-menu {
+        right: 0;
+        left: auto;
+        min-width: 180px;
+        margin-top: 10px;
+        z-index: 2000;
+    }
+
+    /* SCROLL verticale per le news 6 */
+    .announce-scroll {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* wellcome serach form */
+    .form-search .d-flex {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .form-search input {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* dropdown  */
+    .form-search .dropdown {
+        width: 100%;
+    }
+
+    .form-search .dropdown-menu {
+        width: 100%;
+        max-height: 60vh;
+        min-width: 100%;
+        overflow-y: auto;
+        border-radius: 12px;
+        left: 0;
+        right: 0;
+    }
+
+    .form-search .dropdown-item {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+
+    .form-search .dropdown-divider {
+        margin: 4px 0;
+    }
+
+    .form-search .btn-dropdown {
+        width: 100%;
+    }
+
+    .form-search .btn-search {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Form cellulare/tabletcreate announce */
+
+@media (max-width: 991px) {
+
+    .mobile-bg {
+        position: relative;
+        overflow: hidden;
+        background-image: url('/public/img/create-announce.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 60px 15px;
+        min-height: 100vh;
+    }
+
+    .mobile-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+
+    .mobile-bg>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-container-announce {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+        max-width: 450px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* login  */
+    .mobile-bg-login {
+        position: relative;
+        overflow: hidden;
+        background-image: url('/public/img/login.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 60px 15px;
+        min-height: 100vh;
+    }
+
+    .mobile-bg-login::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+
+    .mobile-bg-login>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-container-login {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 12px;
+        max-width: 350px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* registraziome */
+
+    .mobile-bg-register {
+        position: relative;
+        overflow: hidden;
+        background-image: url('/img/register.jpg');
+        /* cambia immagine */
+        background-size: cover;
+        background-position: center;
+        padding: 60px 15px;
+        min-height: 100vh;
+    }
+
+    /* overlay */
+    .register-custom {
+        height: auto;
+        background: none;
+        /* togli background desktop */
+    }
+
+    .mobile-bg-register {
+        position: relative;
+        overflow: hidden;
+        background: url(/public/img/register.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 60px 15px;
+        min-height: 100vh;
+    }
+
+    .mobile-bg-register::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+
+    .mobile-bg-register>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-container {
+        max-width: 350px;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* forgot pass */
+    .status-message-resend-password {
+        width: 90%;
+        top: 90px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .forgot-password {
+        height: auto;
+        background: none;
+    }
+
+    .mobile-bg-forgot {
+        position: relative;
+        overflow: hidden;
+        background: url(/public/img/reset-password.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 60px 15px;
+        min-height: 100vh;
+    }
+
+    .mobile-bg-forgot::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+    }
+
+    .mobile-bg-forgot>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-container-password {
+        max-width: 350px;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 12px;
+    }
+
+}

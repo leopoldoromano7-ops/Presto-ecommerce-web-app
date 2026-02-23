@@ -1,0 +1,37 @@
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.6s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.no-preloader #preloader {
+  display: none;
+}
+
+
+/* logo */
+.logo-svg {
+  width: 200px;
+}
+
+.bolt-svg {
+  fill: var(--darkBlu);
+  animation: lightningBolt 1s infinite;
+}
+
+@keyframes lightningBolt {
+  0%, 100% { fill: #0f172a; }
+  45% { fill: #facc15; }
+  50% { fill: #ffffff; }
+  55% { fill: #facc15; }
+}

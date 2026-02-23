@@ -1,0 +1,6 @@
+@import 'bootstrap';
+@import './style.css';
+@import './responsive.css';
+@import './preloader.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "bootstrap-icons";
