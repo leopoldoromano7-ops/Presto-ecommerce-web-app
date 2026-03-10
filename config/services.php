@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'revisor' => [
+        'address' => env('REVISOR_EMAIL', env('MAIL_FROM_ADDRESS')),
+    ],
+
 ];

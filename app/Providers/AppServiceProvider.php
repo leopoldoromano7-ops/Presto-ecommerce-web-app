@@ -24,10 +24,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if(Schema::hasTable("categories")){
-            $categories=Category::all();
-            View::share("categories",$categories);
-        }
+        View::composer("*", function ($view) {
+            $categories = collect();
+
+            if (Schema::hasTable("categories")) {
+                $categories = Category::orderBy("name")->get();
+            }
+
+            $view->with("categories", $categories);
+        });
+
         Paginator::useBootstrapFive();
 
         Password::defaults(function () {

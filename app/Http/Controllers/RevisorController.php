@@ -7,7 +7,6 @@ use App\Mail\BecomeRevisor;
 use App\Models\Announce;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -57,13 +56,37 @@ class RevisorController extends Controller
 
     public function becomeRevisor(Request $request)
     {
-        Mail::to("hello@example.com")->send(new BecomeRevisor($request->name, $request->email, $request->description, Auth::user()));
+        $validated = $request->validate([
+            "name" => ["required", "string", "max:255"],
+            "email" => ["required", "email", "max:255"],
+            "description" => ["required", "string", "min:20", "max:2000"],
+        ]);
+
+        $recipient = config("services.revisor.address") ?? config("mail.from.address");
+
+        Mail::to($recipient)->send(new BecomeRevisor(
+            $validated["name"],
+            $validated["email"],
+            $validated["description"],
+            $request->user()
+        ));
+
         return redirect()->route("formRevisor")->with(["status" => __('ui.become_revisor_success')]);
     }
 
-    public function makeRevisor(User $user)
+    public function makeRevisor(Request $request, User $user)
     {
-        Artisan::call("app:make-user-revisor", ["email" => $user->email]);
-        return redirect()->back()->with(["status" => __('ui.user_now_revisor')]);
+        if ($request->isMethod("get")) {
+            return view("revisors.confirm-make-revisor", compact("user"));
+        }
+
+        if (!$user->is_revisor) {
+            $user->forceFill(["is_revisor" => true])->save();
+        }
+
+        return redirect()->route("homepage")->with([
+            "status" => __('ui.user_now_revisor'),
+            "type" => "success",
+        ]);
     }
 }

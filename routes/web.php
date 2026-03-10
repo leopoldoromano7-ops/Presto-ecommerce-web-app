@@ -19,16 +19,22 @@ Route::get('/search/announce', [PublicController::class, 'searchAnnounce'])->nam
 Route::get('/chi-siamo',[PublicController::class, 'aboutUs'])->name('about_us');
 
 // rotte revisors
-Route::get("/revisors/index",[RevisorController::class,"revisors_index"])->middleware("isRevisor")->name("revisors_index");
-Route::patch("/accept/{announce}",[RevisorController::class,"accept"])->name("accept");
-Route::patch("/reject/{announce}",[RevisorController::class,"reject"])->name("reject");
-
-Route::patch("/back/{announce}", [RevisorController::class, "back"])->name("back_announce");
+Route::middleware(["auth", "isRevisor"])->group(function () {
+    Route::get("/revisors/index", [RevisorController::class, "revisors_index"])->name("revisors_index");
+    Route::patch("/accept/{announce}", [RevisorController::class, "accept"])->name("accept");
+    Route::patch("/reject/{announce}", [RevisorController::class, "reject"])->name("reject");
+    Route::patch("/back/{announce}", [RevisorController::class, "back"])->name("back_announce");
+});
 
 // rotta mail
-Route::get("/mail/becomeRevised",[RevisorController::class,"formRevisor"])->middleware("auth")->name("formRevisor");
-Route::post("/revisor/request",[RevisorController::class,"becomeRevisor"])->middleware("auth")->name("become.revisor");
-Route::get("/make/revisor/{user}",[RevisorController::class,"makeRevisor"])->name("make.revisor");
+Route::middleware("auth")->group(function () {
+    Route::get("/mail/becomeRevised", [RevisorController::class, "formRevisor"])->name("formRevisor");
+    Route::post("/revisor/request", [RevisorController::class, "becomeRevisor"])->name("become.revisor");
+});
+
+Route::match(["get", "post"], "/make/revisor/{user}", [RevisorController::class, "makeRevisor"])
+    ->middleware("signed")
+    ->name("make.revisor");
 
 // rotte lingue 
 Route::post("/lingua/{lang}",[PublicController::class,"setLenguage"])->name("setFlags");

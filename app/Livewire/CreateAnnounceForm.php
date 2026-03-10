@@ -12,7 +12,6 @@ use App\Models\Category;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\File;
 
 class CreateAnnounceForm extends Component
 {
@@ -28,7 +27,7 @@ class CreateAnnounceForm extends Component
     #[Validate('required|min:10')]
     public $description;
 
-    #[Validate('required')]
+    #[Validate('required|exists:categories,id')]
     public $category;
 
 
@@ -94,8 +93,6 @@ class CreateAnnounceForm extends Component
                     new GoogleVisionLabelImage($newImage->id),
                 ])->dispatch($newImage->id);
             }
-
-            File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
 
         session()->flash('status', __('ui.announce_pending'));

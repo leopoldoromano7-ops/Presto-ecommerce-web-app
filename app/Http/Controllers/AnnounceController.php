@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Announce;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -23,12 +24,12 @@ class AnnounceController extends Controller implements HasMiddleware
      */
     public function home()
     {
-        $announces = Announce::where("is_accepted",true)->take(6)->orderBy("created_at","desc")->get();
+        $announces = Announce::accepted()->latest()->take(6)->get();
         return view('welcome', compact('announces'));  
     }
     public function index()
     {
-        $announces = Announce::where("is_accepted",true)->orderBy("created_at","desc")->paginate(6);
+        $announces = Announce::accepted()->latest()->paginate(6);
         return view("announces.index",compact("announces"));
     }
     
@@ -53,11 +54,16 @@ class AnnounceController extends Controller implements HasMiddleware
      */
     public function show(Announce $announce)
     {
+        abort_unless($announce->isVisibleTo(Auth::user()), 404);
+
         return view("announces.show",compact("announce"));
     }
     public function category_show(Category $category)
     {
-        return view("category.show",["announces"=>$category->announces,"category"=>$category]);
+        return view("category.show", [
+            "announces" => $category->announces()->accepted()->latest()->get(),
+            "category" => $category,
+        ]);
     }
 
     /**

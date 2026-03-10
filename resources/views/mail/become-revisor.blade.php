@@ -18,7 +18,7 @@
                     {{$description}}
                 </p>
                 <p>Se vuoi renderl* revisore, clicca qua: </p>
-                <a href="{{route("make.revisor",compact("user"))}}">Rendi revisor</a>
+                <a href="{{ \Illuminate\Support\Facades\URL::temporarySignedRoute('make.revisor', now()->addDay(), ['user' => $user]) }}">Apri conferma revisore</a>
             </div>
         </section>
     </main>
